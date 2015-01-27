@@ -1,0 +1,10 @@
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    //通过睡线程的方式控制Icon显示时间
+    [NSThread sleepForTimeInterval:2];
+    
+    [self.window makeKeyAndVisible];
+    return YES;
+}
