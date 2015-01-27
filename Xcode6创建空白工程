@@ -1,0 +1,5 @@
+Xcode 6.x 创建新的空白工程：
+1、创建时选择Single View Application
+2、删除Supporting Files 目录下 Info.plist的Launch screen interface file base name和Main storyboard file base name
+3、删除工程目录下的Main.storyboard和LaunchScreen.xib
+4、添加一张Default-568h@2x.png
