@@ -1,0 +1,3 @@
+这两天做UITextField和UITextView自定义键盘的时候发现有几个键盘弹出后怎么也不能收起
+resignFirstResponder 方法走了也不管用 后来尝试在resignFirstResponder前先becameFirstResponder 就管用了 
+一直搞不清怎么回事  后来才发现是TextField和label多了 把labe lresignFirstResponder了 
