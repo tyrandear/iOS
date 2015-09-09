@@ -1,0 +1,26 @@
+
+1. 在Mac上启动 Keychain-->login keychain--> Certificates分类。将会看到开发，发布，推送证书。“Apple Development Push Services”是推送证书前缀，展开证书后是秘钥。
+
+2. 扩展此选项然后右击“Apple Development Push Services” > Export “Apple Development Push Services: App ID”。保存为 apns-cert.p12文件。
+
+3. 扩展“Apple Development Push Services” 对“Private Key”做同样操作，保存为 apns-key.p12 文件。
+
+4. 打开终端将p12文件转换为PEM格式：
+openssl pkcs12 -clcerts -nokeys -out apns-cert.pem -in apns-cert.p12
+openssl pkcs12 -nocerts -out apns-key.pem -in apns-key.p12
+
+5. 需要移除密码，导出/转换时不要设定或者执行：
+openssl rsa -in apns-key.pem -out apns-key-noenc.pem
+
+6. 合并证书和key，使用ssl连接到apns时将要使用：
+cat apns-cert.pem apns-key-noenc.pem > apns-dev.pem
+
+或者：
+1.
+openssl pkcs12 -clcerts -nokeys -out apns-cert.pem -in apns-cert.p12
+// 不加密，要加密去掉-nodes
+openssl pkcs12 -nocerts -out apns-key.pem -in apns-key.p12 -nodes
+2.合并
+cat apns-cert.pem apns-key.pem > apns-dev.pem
+window下为：
+copy /b apns-cert.pem+apns-key.pem apns-dev.pem
